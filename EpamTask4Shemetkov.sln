@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GausHelperLibrary", "GausHelperLibrary\GausHelperLibrary.csproj", "{ADACFAD8-5A6F-4A07-A03A-81531DA0C0C7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UTGauss", "UTGauss\UTGauss.csproj", "{424CBAF8-CDCF-4CF0-A8BC-F8C0E95C577A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{ADACFAD8-5A6F-4A07-A03A-81531DA0C0C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ADACFAD8-5A6F-4A07-A03A-81531DA0C0C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ADACFAD8-5A6F-4A07-A03A-81531DA0C0C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ADACFAD8-5A6F-4A07-A03A-81531DA0C0C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{424CBAF8-CDCF-4CF0-A8BC-F8C0E95C577A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{424CBAF8-CDCF-4CF0-A8BC-F8C0E95C577A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{424CBAF8-CDCF-4CF0-A8BC-F8C0E95C577A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{424CBAF8-CDCF-4CF0-A8BC-F8C0E95C577A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
