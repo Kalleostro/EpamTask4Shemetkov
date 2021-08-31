@@ -13,8 +13,7 @@ namespace HttpServerService
                 listener.Prefixes.Add("http://localhost:8888/connection/");
                 listener.Start();
                 HttpListenerContext context = listener.GetContext();
-                HttpListenerRequest request = context.Request;  
-                Console.WriteLine(request.HttpMethod + " " + request.UserHostName);
+                HttpListenerRequest request = context.Request;
                 Stream requestStream = request.InputStream;
                 HttpListenerResponse response = context.Response;
 
@@ -27,6 +26,11 @@ namespace HttpServerService
                 output.Write(buffer, 0, buffer.Length);
                 output.Close();
             }
+        }
+
+        private string CaseToUpperTest(string text)
+        {
+            
         }
     }
 }

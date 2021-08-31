@@ -33,5 +33,10 @@ namespace HttpServerService
             response.Close();
             return reply;
         }
+
+        public double[,] RequestMatrix()
+        {
+            
+        }
     }
 }
