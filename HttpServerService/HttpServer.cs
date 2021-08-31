@@ -10,6 +10,7 @@ namespace HttpServerService
         {
             {
                 HttpListener listener = new HttpListener();
+                ByteMatrixHelper helper = new ByteMatrixHelper();
                 listener.Prefixes.Add("http://localhost:8888/connection/");
                 listener.Start();
                 HttpListenerContext context = listener.GetContext();
@@ -17,11 +18,13 @@ namespace HttpServerService
                 Stream requestStream = request.InputStream;
                 HttpListenerResponse response = context.Response;
 
-                StreamReader reader = new StreamReader(requestStream);
-                string responseStr = reader.ReadToEnd();
-                int res = Int32.Parse(responseStr);
-                res++;
-                byte[] buffer = System.Text.Encoding.UTF8.GetBytes(res.ToString());
+                MemoryStream ms = new MemoryStream();
+                requestStream.CopyTo(ms);
+                // StreamReader reader = new StreamReader(requestStream);
+                // string responseMatr = reader.ReadToEnd();
+                double[,] res = helper.ByteArrayToMatrix(ms.ToArray());
+                res[1, 2]++;
+                byte[] buffer = helper.MatrixToByteArray(res);
                 //byte[] buffer = System.Text.Encoding.UTF8.GetBytes(responseStr.ToUpper());
                 response.ContentLength64 = buffer.Length;
                 Stream output = response.OutputStream;

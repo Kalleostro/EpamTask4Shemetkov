@@ -20,15 +20,25 @@ namespace HttpServerService
         }
 
         //convert a byte array to a matrix
-        public double[] ByteArrayToMatrix(byte[] arrBytes)
+        public double[,] ByteArrayToMatrix(byte[] arrBytes)
         {
             MemoryStream memStream = new MemoryStream();
             BinaryFormatter binForm = new BinaryFormatter();
             memStream.Write(arrBytes, 0, arrBytes.Length);
             memStream.Seek(0, SeekOrigin.Begin);
-            double[] resultMatrix = (double[]) binForm.Deserialize(memStream);
+            double[,] matrix = (double[,]) binForm.Deserialize(memStream);
 
-            return resultMatrix;
+            return matrix;
+        }
+        public double[] ByteArrayToVector(byte[] arrBytes)
+        {
+            MemoryStream memStream = new MemoryStream();
+            BinaryFormatter binForm = new BinaryFormatter();
+            memStream.Write(arrBytes, 0, arrBytes.Length);
+            memStream.Seek(0, SeekOrigin.Begin);
+            double[] matrix = (double[]) binForm.Deserialize(memStream);
+
+            return matrix;
         }
     }
 }

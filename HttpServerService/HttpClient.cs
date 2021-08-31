@@ -36,22 +36,23 @@ namespace HttpServerService
             return reply;
         }
 
-        public double[] RequestMatrixSolution(double[,] extendedMatrix)
+        public double[,] RequestMatrixSolution(double[,] extendedMatrix)
         {
-            var resultMatrix = new double[extendedMatrix.Length];
-            //byte[] data = Encoding.UTF8.GetBytes(str);
+            var resultMatrix = new double[extendedMatrix.GetLength(0),extendedMatrix.GetLength(1)];
+            
             byte[] data = _byteMatrixHelper.MatrixToByteArray(extendedMatrix);
             RequestStream = request.GetRequestStream();
             RequestStream.Write(data, 0, data.Length);
             RequestStream.Close();
             
             Response = (HttpWebResponse)request.GetResponse();
+            
             MemoryStream ms = new MemoryStream();
             ResponseStream = Response.GetResponseStream();
             ResponseStream.CopyTo(ms);
-            StreamReader reader = new StreamReader(ResponseStream);
+            
             resultMatrix = _byteMatrixHelper.ByteArrayToMatrix(ms.ToArray());
-            //var reply = reader.ReadToEnd();
+            
             Response.Close();
             return resultMatrix;
         }

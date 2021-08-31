@@ -19,9 +19,14 @@ namespace UTGauss
 
             Task.Run(() => { requestServer.InitServer(); });
             
-            int expectedResponse = 2;
+            double[,] expectedResponse = { { 1, -1, -5 },
+                { 2, 1, -6} };
 
-            Assert.AreEqual(expectedResponse,requestClient.RequestStringForTest());
+
+            double[,] matrix = { { 1, -1, -5 },
+                { 2, 1, -7} };
+            
+            Assert.AreEqual(expectedResponse,requestClient.RequestMatrixSolution(matrix));
         }
     }
 }
