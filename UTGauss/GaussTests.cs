@@ -19,7 +19,7 @@ namespace UTGauss
 
             Task.Run(() => { requestServer.InitServer(); });
             
-            string expectedResponse = "PRIVET";
+            int expectedResponse = 2;
 
             Assert.AreEqual(expectedResponse,requestClient.RequestStringForTest());
         }

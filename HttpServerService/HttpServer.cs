@@ -19,18 +19,16 @@ namespace HttpServerService
 
                 StreamReader reader = new StreamReader(requestStream);
                 string responseStr = reader.ReadToEnd();
-
-                byte[] buffer = System.Text.Encoding.UTF8.GetBytes(responseStr.ToUpper());
+                int res = Int32.Parse(responseStr);
+                res++;
+                byte[] buffer = System.Text.Encoding.UTF8.GetBytes(res.ToString());
+                //byte[] buffer = System.Text.Encoding.UTF8.GetBytes(responseStr.ToUpper());
                 response.ContentLength64 = buffer.Length;
                 Stream output = response.OutputStream;
                 output.Write(buffer, 0, buffer.Length);
                 output.Close();
             }
         }
-
-        private string CaseToUpperTest(string text)
-        {
-            
-        }
+        
     }
 }
