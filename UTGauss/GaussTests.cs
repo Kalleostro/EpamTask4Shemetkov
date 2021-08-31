@@ -1,5 +1,6 @@
+using System.Threading.Tasks;
 using NUnit.Framework;
-using RequestHelperLibrary;
+using HttpServerService;
 
 namespace UTGauss
 {
@@ -11,11 +12,17 @@ namespace UTGauss
         }
 
         [Test]
-        public void Test1()
+        public void TestServer()
         {
-            HttpServerHelper requestHelper = new HttpServerHelper();
-            requestHelper.Test();
-            Assert.Pass();
+            HttpClient requestClient = new HttpClient();
+            HttpServer requestServer = new HttpServer();
+
+            Task.Run(() => { requestServer.InitServer(); });
+            
+            string expected1 = "privet";
+            string expected2 = "PRIVET";
+
+            Assert.AreEqual(expected2,requestClient.GetRequest());
         }
     }
 }

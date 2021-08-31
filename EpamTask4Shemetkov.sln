@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GausHelperLibrary", "GausHe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UTGauss", "UTGauss\UTGauss.csproj", "{424CBAF8-CDCF-4CF0-A8BC-F8C0E95C577A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HttpServerService", "HttpServerService\HttpServerService.csproj", "{DC806F44-C4A5-490E-BB5F-E37372583542}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{424CBAF8-CDCF-4CF0-A8BC-F8C0E95C577A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{424CBAF8-CDCF-4CF0-A8BC-F8C0E95C577A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{424CBAF8-CDCF-4CF0-A8BC-F8C0E95C577A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC806F44-C4A5-490E-BB5F-E37372583542}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC806F44-C4A5-490E-BB5F-E37372583542}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC806F44-C4A5-490E-BB5F-E37372583542}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC806F44-C4A5-490E-BB5F-E37372583542}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

@@ -14,7 +14,8 @@
 
     <ItemGroup>
       <ProjectReference Include="..\GausHelperLibrary\GausHelperLibrary.csproj" />
-      <ProjectReference Include="..\RequestHelperLibrary\RequestHelperLibrary.csproj" />
+      <ProjectReference Include="..\HttpServerHelper\HttpServerHelper.csproj" />
+      <ProjectReference Include="..\HttpServerService\HttpServerService.csproj" />
     </ItemGroup>
 
 </Project>
