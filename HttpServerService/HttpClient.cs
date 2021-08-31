@@ -7,20 +7,27 @@ namespace HttpServerService
 {
     public class HttpClient
     {
-        public string GetRequest()
+        private HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://localhost:8888/connection/");
+        private HttpWebResponse response { get; set; }
+        private Stream requestStream { get; set; }
+        private Stream responseStream { get; set; }
+
+        public HttpClient()
+        {
+            request.Method = "POST";
+        }
+
+        public string RequestStringForTest()
         {
             var str = "privet";
             byte[] data = Encoding.UTF8.GetBytes(str);
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://localhost:8888/connection/");
-            request.Method = "POST";
-            request.ContentType = "text/*";
-            Stream requestStream = request.GetRequestStream();
+            requestStream = request.GetRequestStream();
             requestStream.Write(data, 0, data.Length);
             requestStream.Close();
-
-            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-            Stream stream = response.GetResponseStream();
-            StreamReader reader = new StreamReader(stream);
+            
+            response = (HttpWebResponse)request.GetResponse();
+            responseStream = response.GetResponseStream();
+            StreamReader reader = new StreamReader(responseStream);
             var reply = reader.ReadToEnd();
             Console.WriteLine(reader.ReadToEnd());
             response.Close();
