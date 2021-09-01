@@ -4,10 +4,6 @@ namespace GausHelperLibrary
 {
     public class SimpleGaussSystem : Gauss
     {
-        public SimpleGaussSystem(double[,] matrixA, double[] matrixB) : base(matrixA, matrixB)
-        {
-            
-        }
         public override double[] Solve(double[,] extendedMatrix)
         {
             var solution = new double[size];

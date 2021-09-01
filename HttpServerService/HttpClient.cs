@@ -20,26 +20,9 @@ namespace HttpServerService
             
         }
 
-        public string RequestStringForTest()
+        public double[] RequestMatrixSolution(double[,] extendedMatrix)
         {
-            var str = "privet";
-            byte[] data = Encoding.UTF8.GetBytes(str);
-            RequestStream = request.GetRequestStream();
-            RequestStream.Write(data, 0, data.Length);
-            RequestStream.Close();
-            
-            Response = (HttpWebResponse)request.GetResponse();
-            ResponseStream = Response.GetResponseStream();
-            StreamReader reader = new StreamReader(ResponseStream);
-            var reply = reader.ReadToEnd();
-            Response.Close();
-            return reply;
-        }
-
-        public double[,] RequestMatrixSolution(double[,] extendedMatrix)
-        {
-            var resultMatrix = new double[extendedMatrix.GetLength(0),extendedMatrix.GetLength(1)];
-            
+            var resultVector = new double[extendedMatrix.GetLength(0)];
             byte[] data = _byteMatrixHelper.MatrixToByteArray(extendedMatrix);
             RequestStream = request.GetRequestStream();
             RequestStream.Write(data, 0, data.Length);
@@ -51,10 +34,10 @@ namespace HttpServerService
             ResponseStream = Response.GetResponseStream();
             ResponseStream.CopyTo(ms);
             
-            resultMatrix = _byteMatrixHelper.ByteArrayToMatrix(ms.ToArray());
+            resultVector = _byteMatrixHelper.ByteArrayToVector(ms.ToArray());
             
             Response.Close();
-            return resultMatrix;
+            return resultVector;
         }
     }
 }

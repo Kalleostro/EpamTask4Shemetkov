@@ -18,6 +18,18 @@ namespace HttpServerService
 
             return ms.ToArray();
         }
+        //convert a vector to a byte array
+        public byte[] VectorToByteArray(double[] vector)
+        {
+            if(vector == null)
+                return null;
+
+            BinaryFormatter bf = new BinaryFormatter();
+            MemoryStream ms = new MemoryStream();
+            bf.Serialize(ms, vector);
+
+            return ms.ToArray();
+        }
 
         //convert a byte array to a matrix
         public double[,] ByteArrayToMatrix(byte[] arrBytes)
@@ -36,9 +48,9 @@ namespace HttpServerService
             BinaryFormatter binForm = new BinaryFormatter();
             memStream.Write(arrBytes, 0, arrBytes.Length);
             memStream.Seek(0, SeekOrigin.Begin);
-            double[] matrix = (double[]) binForm.Deserialize(memStream);
+            double[] vector = (double[]) binForm.Deserialize(memStream);
 
-            return matrix;
+            return vector;
         }
     }
 }

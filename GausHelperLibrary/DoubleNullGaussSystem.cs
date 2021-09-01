@@ -2,11 +2,7 @@ namespace GausHelperLibrary
 {
     public class DoubleNullGaussSystem : Gauss
     {
-         public DoubleNullGaussSystem(double[,] matrixA, double[] matrixB) : base(matrixA, matrixB)
-         {
-                
-         }  
-        public override double[] Solve(double[,] matrix)
+        public override double[] Solve(double[,] extendedMatrix)
         {
             var solution = new double[size];
 
@@ -16,7 +12,7 @@ namespace GausHelperLibrary
             {
                 for (var j = 0; j < size + 1; j++)
                 {
-                    tempMatrix[i, j] = matrix[i, j];
+                    tempMatrix[i, j] = extendedMatrix[i, j];
                 }
             }
 
@@ -25,7 +21,7 @@ namespace GausHelperLibrary
             {
                 for (var j = 0; j < size + 1; j++)
                 {
-                    tempMatrix[i, j] /= matrix[i, i];
+                    tempMatrix[i, j] /= extendedMatrix[i, i];
                 }
                 for (var j = i + 1; j < size; j++)
                 {
@@ -39,7 +35,7 @@ namespace GausHelperLibrary
                 {
                     for (var p = 0; p < size + 1; p++)
                     {
-                        matrix[j, p] = tempMatrix[j, p];
+                        extendedMatrix[j, p] = tempMatrix[j, p];
                     }
                 }
             }
@@ -49,7 +45,7 @@ namespace GausHelperLibrary
             {
                 for (var j = size; j > -1; j--)
                 {
-                    tempMatrix[i, j] /= matrix[i, i];
+                    tempMatrix[i, j] /= extendedMatrix[i, i];
                 }
 
                 for (var j = i - 1; j > -1; j--)

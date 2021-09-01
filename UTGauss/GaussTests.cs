@@ -1,4 +1,5 @@
 using System.Threading.Tasks;
+using GausHelperLibrary;
 using NUnit.Framework;
 using HttpServerService;
 
@@ -14,19 +15,17 @@ namespace UTGauss
         [Test]
         public void TestServer()
         {
-            HttpClient requestClient = new HttpClient();
-            HttpServer requestServer = new HttpServer();
-
-            Task.Run(() => { requestServer.InitServer(); });
+             HttpClient requestClient = new HttpClient();
+             HttpServer requestServer = new HttpServer();
             
-            double[,] expectedResponse = { { 1, -1, -5 },
-                { 2, 1, -6} };
+             Task.Run(() => { requestServer.InitGaussServer(); });
 
-
-            double[,] matrix = { { 1, -1, -5 },
-                { 2, 1, -7} };
+             double[,] matrix = { { 1, -1, -5 },
+                 { 2, 1, -7} };
             
-            Assert.AreEqual(expectedResponse,requestClient.RequestMatrixSolution(matrix));
+             double[] vector = {-4,1};
+            
+            Assert.AreEqual(vector,requestClient.RequestMatrixSolution(matrix));
         }
     }
 }
