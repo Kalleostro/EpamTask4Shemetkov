@@ -22,19 +22,19 @@ namespace HttpServerService
             HttpListenerResponse response = context.Response;
             
 
-            MemoryStream ms = new MemoryStream();
+            var ms = new MemoryStream();
             requestStream.CopyTo(ms);
 
-            double[,] res = helper.ByteArrayToMatrix(ms.ToArray());
+            double[,] responseMatrix = helper.ByteArrayToMatrix(ms.ToArray());
 
-            DoubleNullGaussSystem dngs = new DoubleNullGaussSystem();
-            
-            double[] res1 = dngs.Solve(res);
+            var dngs = new DoubleNullGaussSystem();
 
-            byte[] buffer = helper.VectorToByteArray(res1);
+            double[] result = dngs.Solve(responseMatrix);
+
+            byte[] buffer = helper.VectorToByteArray(result);
 
             response.ContentLength64 = buffer.Length;
-            Stream output = response.OutputStream;
+            var output = response.OutputStream;
             output.Write(buffer, 0, buffer.Length);
             output.Close();
         }

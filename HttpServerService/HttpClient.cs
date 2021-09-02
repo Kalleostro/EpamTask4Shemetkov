@@ -26,7 +26,6 @@ namespace HttpServerService
         /// <returns>vector X</returns>
         public double[] RequestMatrixSolution(double[,] extendedMatrix)
         {
-            var resultVector = new double[extendedMatrix.GetLength(0)];
             byte[] data = _byteMatrixHelper.MatrixToByteArray(extendedMatrix);
             RequestStream = request.GetRequestStream();
             RequestStream.Write(data, 0, data.Length);
@@ -38,7 +37,7 @@ namespace HttpServerService
             ResponseStream = Response.GetResponseStream();
             ResponseStream.CopyTo(ms);
             
-            resultVector = _byteMatrixHelper.ByteArrayToVector(ms.ToArray());
+            var resultVector = _byteMatrixHelper.ByteArrayToVector(ms.ToArray());
             
             Response.Close();
             return resultVector;
