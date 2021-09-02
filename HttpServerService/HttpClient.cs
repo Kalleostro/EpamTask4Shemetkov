@@ -12,12 +12,12 @@ namespace HttpServerService
         private HttpWebResponse Response { get; set; }
         private Stream RequestStream { get; set; }
         private Stream ResponseStream { get; set; }
+        
         ByteMatrixHelper _byteMatrixHelper = new();
 
         public HttpClient()
         {
             request.Method = "POST";
-            
         }
         /// <summary>
         /// request solution from server

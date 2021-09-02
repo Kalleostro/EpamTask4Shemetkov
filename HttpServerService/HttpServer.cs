@@ -21,15 +21,17 @@ namespace HttpServerService
             Stream requestStream = request.InputStream;
             HttpListenerResponse response = context.Response;
             
+            var dngs = new DoubleNullGaussSystem();
+            var sgs = new SimpleGaussSystem();
+            
 
             var ms = new MemoryStream();
             requestStream.CopyTo(ms);
 
             double[,] responseMatrix = helper.ByteArrayToMatrix(ms.ToArray());
 
-            var dngs = new DoubleNullGaussSystem();
-
             double[] result = dngs.Solve(responseMatrix);
+            //double[] result1 = sgs.Solve(responseMatrix);
 
             byte[] buffer = helper.VectorToByteArray(result);
 
