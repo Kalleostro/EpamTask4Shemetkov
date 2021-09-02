@@ -7,10 +7,18 @@ namespace GausHelperLibrary
         public int size { get; set; }
         public double[,] ExtendedMatrix { get; set; }
         public double[] X { get; set; }
-        public Gauss()
-        {
-        }
+        
+        /// <summary>
+        /// solve the system
+        /// </summary>
+        /// <param name="matrix">matrix</param>
+        /// <returns>vector X</returns>
         public abstract double[] Solve(double[,] matrix);
+        /// <summary>
+        /// making extended matrix if needed
+        /// </summary>
+        /// <param name="matrixA"></param>
+        /// <param name="matrixB"></param>
         public void FillExtendedMatrix(double[,] matrixA, double[] matrixB)
         {
             ExtendedMatrix = new double[matrixA.GetLength(0),

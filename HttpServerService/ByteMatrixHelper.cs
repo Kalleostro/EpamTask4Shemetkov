@@ -6,7 +6,11 @@ namespace HttpServerService
 {
     public class ByteMatrixHelper
     {
-        //convert a matrix to a byte array
+        /// <summary>
+        /// convert a matrix to a byte array
+        /// </summary>
+        /// <param name="matrix">matrix</param>
+        /// <returns>bytes</returns>
         public byte[] MatrixToByteArray(double[,] matrix)
         {
             if(matrix == null)
@@ -18,7 +22,11 @@ namespace HttpServerService
 
             return ms.ToArray();
         }
-        //convert a vector to a byte array
+        /// <summary>
+        /// convert a vector to a byte array
+        /// </summary>
+        /// <param name="vector">vector</param>
+        /// <returns>bytes</returns>
         public byte[] VectorToByteArray(double[] vector)
         {
             if(vector == null)
@@ -30,8 +38,12 @@ namespace HttpServerService
 
             return ms.ToArray();
         }
-
-        //convert a byte array to a matrix
+        
+        /// <summary>
+        /// convert a byte array to a matrix
+        /// </summary>
+        /// <param name="arrBytes">bytes</param>
+        /// <returns>matrix</returns>
         public double[,] ByteArrayToMatrix(byte[] arrBytes)
         {
             MemoryStream memStream = new MemoryStream();
@@ -42,6 +54,11 @@ namespace HttpServerService
 
             return matrix;
         }
+        /// <summary>
+        /// convert a byte array to a vector
+        /// </summary>
+        /// <param name="arrBytes">bytes</param>
+        /// <returns>vector</returns>
         public double[] ByteArrayToVector(byte[] arrBytes)
         {
             MemoryStream memStream = new MemoryStream();

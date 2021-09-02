@@ -20,10 +20,12 @@ namespace UTGauss
             
              Task.Run(() => { requestServer.InitGaussServer(); });
 
-             double[,] matrix = { { 1, -1, -5 },
-                 { 2, 1, -7} };
+             double[,] matrix = { { 2,-1,0,0 },
+                 { -1,1,4,13},
+                 {1,2,3,14}
+             };
             
-             double[] vector = {-4,1};
+             double[] vector = {1,2,3};
             
             Assert.AreEqual(vector,requestClient.RequestMatrixSolution(matrix));
         }

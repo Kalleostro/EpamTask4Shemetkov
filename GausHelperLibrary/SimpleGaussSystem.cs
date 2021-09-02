@@ -4,8 +4,14 @@ namespace GausHelperLibrary
 {
     public class SimpleGaussSystem : Gauss
     {
+        /// <summary>
+        /// solve as simple null system
+        /// </summary>
+        /// <param name="extendedMatrix">matrix</param>
+        /// <returns>vector X</returns>
         public override double[] Solve(double[,] extendedMatrix)
         {
+            size = extendedMatrix.GetLength(0);
             var solution = new double[size];
             var tempMatrix = extendedMatrix;
 

@@ -19,7 +19,11 @@ namespace HttpServerService
             request.Method = "POST";
             
         }
-
+        /// <summary>
+        /// request solution from server
+        /// </summary>
+        /// <param name="extendedMatrix">matrix</param>
+        /// <returns>vector X</returns>
         public double[] RequestMatrixSolution(double[,] extendedMatrix)
         {
             var resultVector = new double[extendedMatrix.GetLength(0)];

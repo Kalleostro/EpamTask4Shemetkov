@@ -7,6 +7,9 @@ namespace HttpServerService
 {
     public class HttpServer
     {
+        /// <summary>
+        /// initialize server
+        /// </summary>
         public void InitGaussServer()
         {
             HttpListener listener = new HttpListener();
@@ -26,13 +29,7 @@ namespace HttpServerService
 
             DoubleNullGaussSystem dngs = new DoubleNullGaussSystem();
             
-            double[,] a1 = { { 1, -1},
-                { 2, 1} };
-            double[] a2 = { -5, -7 };
-            
-            dngs.FillExtendedMatrix(a1,a2);
-            
-            double[] res1 = dngs.Solve(dngs.ExtendedMatrix);
+            double[] res1 = dngs.Solve(res);
 
             byte[] buffer = helper.VectorToByteArray(res1);
 
